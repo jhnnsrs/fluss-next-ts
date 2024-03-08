@@ -1,0 +1,20 @@
+overwrite: true
+schema: "http://localhost:10070/graphql"
+documents: "graphql/fluss/**/*.graphql"
+generates:
+  src/fluss/api/fragments.ts:
+    plugins:
+      - "fragment-matcher"
+  src/fluss/api/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHooks: true
+      reactApolloVersion: 3
+      arrayInputCoercion: false
+
+  src/fluss/api/graphql.schema.json:
+    plugins:
+      - "introspection"
